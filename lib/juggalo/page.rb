@@ -8,7 +8,7 @@ module Juggalo
     end
 
     def compose
-      loader.components
+      @loader.load
     end
   end
 end
