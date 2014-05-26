@@ -10,6 +10,7 @@ module Juggalo
     layout  = Layout.new template_location
     page    = Page.new(layout, loader)
 
-    page.compose
+    page.compile
   end
 end
+

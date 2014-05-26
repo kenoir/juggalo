@@ -15,4 +15,3 @@ module Juggalo
   end
 end
 
-

@@ -4,6 +4,12 @@ module Juggalo
 
     def initialize(opts, loader = nil)
       @opts = opts
+
+      @location = opts["location"]
+    end
+
+    def render
+      "<div>#{opts}</div>"
     end
   end
 

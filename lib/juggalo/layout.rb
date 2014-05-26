@@ -19,11 +19,7 @@ module Juggalo
     end
 
     def region(components)
-      if components.kind_of?(Array)
-        components.join
-      else
-        components
-      end
+      components.map { |c| c.render }.join unless components.nil?
     end
 
     def valid_regions
