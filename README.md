@@ -1,6 +1,11 @@
 # Juggalo
 
-TODO: Write a gem description
+Experimenting with config driven web page composition
+
+## TODO
+
+- Load components into template
+- Lots of other stuff ...
 
 ## Installation
 
