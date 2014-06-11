@@ -1,4 +1,5 @@
 require 'yaml'
+require 'juggalo/portlet'
 require 'juggalo/page'
 require 'juggalo/page/loader/base'
 
@@ -10,7 +11,7 @@ module Juggalo
       end
 
       def components
-        page_hash["components"].map { |c| Juggalo::Portlet.new(c) }
+        page_hash["components"].map { |c| create_component_from c }
       end
 
       private

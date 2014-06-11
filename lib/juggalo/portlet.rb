@@ -2,21 +2,15 @@ module Juggalo
   class Portlet
     attr_reader :id, :type, :opts, :location
 
-    def initialize(opts, loader = nil)
-      @opts = opts
-
+    def initialize(opts, loader)
+      @opts     = opts
+      @loader   = loader
       @location = opts["location"]
     end
 
-    def render
-      "<div>#{opts}</div>"
+    def present
+      @loader.load opts
     end
-  end
-
-  class Portlet::Loader
-    attr_reader :adapter
-
-    class HTTP; end
   end
 end
 

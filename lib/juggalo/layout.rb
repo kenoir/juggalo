@@ -19,7 +19,7 @@ module Juggalo
     end
 
     def region(components)
-      components.map { |c| c.render }.join unless components.nil?
+      components.map { |c| c.present }.join unless components.nil?
     end
 
     def valid_regions
