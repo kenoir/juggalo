@@ -10,6 +10,10 @@ module Juggalo
         @location = location
       end
 
+      def page
+        page_hash["page"]
+      end
+
       def components
         page_hash["components"].map { |c| create_component_from c }
       end

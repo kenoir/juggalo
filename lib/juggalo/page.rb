@@ -1,30 +1,45 @@
+require 'juggalo/layout'
+
 module Juggalo
   class Page
-    attr_reader :components, :template
 
-    def initialize(layout, loader)
-      @layout = layout
+    def initialize(opts, loader)
+      @opts   = opts
       @loader = loader
     end
 
-    def compile
-      @layout.regions = compose
-      @layout.render
+    def render
+      layout.render
+    end
+
+    def layout
+      @layout ||= Layout.new(page["template"], regions)
+    end
+
+    def page
+      @page ||= loader[:page]
+    end
+
+    def portlets
+      @portlets ||= loader[:components]
+    end
+
+    def regions
+      @regions ||= portlets.reduce({}) do |regions, portlet|
+        regions.tap do |r|
+          if r[portlet.location].nil?
+            r[portlet.location] = [portlet]
+          else
+            r[portlet.location] << portlet
+          end
+        end
+      end
     end
 
     private
 
-    def compose
-      @components ||= @loader.load
-      @regions    ||= @components.reduce({}) do |regions, component|
-        regions.tap do |r|
-          if r[component.location].nil?
-            r[component.location] = [component]
-          else
-            r[component.location] << component
-          end
-        end
-      end
+    def loader
+      @load_cache ||= @loader.load
     end
 
   end

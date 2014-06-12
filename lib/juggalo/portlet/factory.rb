@@ -7,7 +7,7 @@ module Juggalo
       adapter = Portlet::Loader::HTTP.new
       loader  = Portlet::Loader.new(adapter)
 
-      Juggalo::Portlet.new(c, loader)
+      Portlet.new(c, loader)
     end
   end
 end

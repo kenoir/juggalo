@@ -1,11 +1,14 @@
 module Juggalo
   class Portlet
-    attr_reader :id, :type, :opts, :location
+    attr_reader :id, :opts
 
     def initialize(opts, loader)
       @opts     = opts
       @loader   = loader
-      @location = opts["location"]
+    end
+
+    def location
+      opts["page_location"]
     end
 
     def present

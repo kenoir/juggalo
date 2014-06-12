@@ -2,10 +2,10 @@ require 'mustache'
 
 module Juggalo
   class Layout < Mustache
-    attr_accessor :regions
+    attr_reader :regions
 
-    def initialize(template_location)
-      @regions={}
+    def initialize(template_location, regions)
+      @regions = regions
       self.template_file = template_location
     end
 

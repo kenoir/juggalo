@@ -10,7 +10,10 @@ module Juggalo
     end
 
     def load
-      @adapter.components
+      {
+        :page       => @adapter.page,
+        :components => @adapter.components
+      }
     end
   end
 end
